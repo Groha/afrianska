@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "imgUrl": "../assets/images/card_1.svg",
+        "title": "Bring Technology To Your Comfrotable Home",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "btn": "Learn more"
+    },
+    {
+        "id": "2",
+        "imgUrl": "../assets/images/card_2.svg",
+        "title": "Make Your business To Be Better Famous In Internet",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "btn": "Learn more"
+    },
+    {
+        "id": "3",
+        "imgUrl": "../assets/images/card_3.svg",
+        "title": "Build Your Digital Product That Suitable For Your Need",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "btn": "Learn more"
+    }
+
+]
