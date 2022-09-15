@@ -20,4 +20,11 @@ export default defineNuxtConfig({
             }
         },
     },
+    meta: {
+        script: [
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js' },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js' },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js' }
+        ]
+    }
 })

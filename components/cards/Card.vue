@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 interface CardProps {
   imgUrl?: string;
   title?: string;
@@ -14,10 +16,41 @@ const getClass = (id) => {
     else if(id =="2") return "card-2";
     else return "card-3";
 }
+
+onMounted(() => {
+    function animateFrom(elem) {
+        var x = 0,
+            y = 0;
+        if(elem.classList.contains("odd-card")) {
+            x = -500;
+            y = 0;
+        } else if (elem.classList.contains("even-card")) {
+            x = 500;
+            y = 0;
+        }
+        gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
+            duration: 3.5, 
+            x: 0,
+            y: 0,
+            autoAlpha: 1, 
+            ease: "expo", 
+            overwrite: "auto"
+        });
+    }
+        
+    gsap.utils.toArray(".gs_reveal").forEach(function(elem) {
+        ScrollTrigger.create({
+            trigger: elem,
+            start: "top +=900px",
+            onEnter: function() { animateFrom(elem) }, 
+            // onEnterBack: function() { animateFrom(elem, -1) }
+        });
+    });
+})
 </script>
 
 <template>
-    <div :class="id % 2 === 0 ? 'odd-card' : 'even-card'">
+    <div :class="id % 2 === 0 ? 'odd-card gs_reveal' : 'even-card gs_reveal'">
         <div class="w-[132px] h-[132px] rounded-full mx-auto mb-[56px] last:mb-0 relative" style="background: linear-gradient(180.99deg, rgba(255, 255, 255, 0) 6.19%, rgba(100, 181, 246, 0.6) 103.09%);">
             <picture :class="getClass(id)">
                 <img :src="imgUrl" alt="">
