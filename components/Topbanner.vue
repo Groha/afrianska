@@ -20,8 +20,33 @@ onMounted(() => {
     })
 })
 
-const addSnow = () => {
+const showSnow = () => {
+    document.querySelectorAll('.snow-wrap span')?.forEach(span => {
+        span.style.animationDuration = `${Math.floor(Math.random() * 100)}s`
+    });
     document.querySelector('.snow-wrap')?.classList.toggle('opacity-0')
+}
+
+const showFlash = () => {
+    document.querySelector('.flash-wrap')?.classList.remove('opacity-0')
+    document.querySelector('nav').style.zIndex = "-10";
+    setTimeout(() => {
+        document.querySelector('.flash-wrap')?.classList.add('opacity-0')
+        document.querySelector('nav').style.zIndex = null;
+    }, 300)
+}
+
+const showVideo = () => {
+    document.querySelector('.video-wrap')?.classList.toggle('opacity-0')
+    const vid = document.querySelector('.video-wrap video')
+    if(vid.paused) vid?.play()
+    else vid?.pause()
+    
+}
+
+const showLock = () => {
+    document.querySelector('.lock-wrap')?.classList.toggle('opacity-0')
+    document.querySelector('body')?.classList.toggle('overflow-hidden')
 }
 </script>
 
@@ -31,8 +56,8 @@ const addSnow = () => {
         <div class="wrapper">
             <div class="container-sm pt-[100px] md:pt-[190px] pointer-events-none relative z-2">
                 <div class="max-w-[610px]">
-                    <h1 class="text-[64px] leading-[116%] tracking-[0.04em] text-[#1F3F68] font-semibold mb-[30px] font-Galien drop-shadow-[0_2px_2px_rgba(255,255,255,1)]">New Automation Tool for Your Home</h1>
-                    <p class="text-16 leading-[163%] tracking-wider text-[#1F3F68] mb-[70px] font-Gilroy max-w-[425px] drop-shadow-[0_2px_2px_rgba(255,255,255,1)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus tristique vulputate ultrices ut mauris tellus at. Posuere sollicitudin odio tellus elit.</p>
+                    <h1 class="text-[64px] leading-[116%] tracking-[0.04em] text-[#1F3F68] font-semibold mb-[30px] font-Galien drop-shadow-[0_2px_2px_rgba(255,255,255,1)] relative z-10">New Automation Tool for Your Home</h1>
+                    <p class="text-16 leading-[163%] tracking-wider text-[#1F3F68] mb-[70px] font-Gilroy max-w-[425px] drop-shadow-[0_2px_2px_rgba(255,255,255,1)] relative z-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus tristique vulputate ultrices ut mauris tellus at. Posuere sollicitudin odio tellus elit.</p>
                     <buttonBlue />
                 </div>
             </div>
@@ -57,22 +82,22 @@ const addSnow = () => {
                 <picture class="absolute bottom-[29.14%] right-[1.3%] img-women">
                     <img src="~/assets/images/women.svg" alt="">
                 </picture>
-                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#F58A8A] flex items-center justify-center top-[21.75%] left-[52.33%] shadow-small-cube small-cube-1">
+                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#F58A8A] flex items-center justify-center top-[21.75%] left-[52.33%] shadow-small-cube small-cube-1 cursor-pointer" @click="showLock">
                     <picture class="">
                         <img src="~/assets/images/ic_1.svg" alt="">
                     </picture>
                 </div>
-                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#56CCF2] flex items-center justify-center top-[4.5%] right-[34.88%] shadow-small-cube small-cube-2 cursor-pointer" @click="addSnow">
+                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#56CCF2] flex items-center justify-center top-[4.5%] right-[34.88%] shadow-small-cube small-cube-2 cursor-pointer" @click="showSnow">
                     <picture class="">
                         <img src="~/assets/images/ic_2.svg" alt="">
                     </picture>
                 </div>
-                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#6FCF97] flex items-center justify-center top-[4.5%] right-[16.28%] shadow-small-cube small-cube-3">
+                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#6FCF97] flex items-center justify-center top-[4.5%] right-[16.28%] shadow-small-cube small-cube-3 cursor-pointer" @click="showVideo">
                     <picture class="">
                         <img src="~/assets/images/ic_3.svg" alt="">
                     </picture>
                 </div>
-                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#F2C94C] flex items-center justify-center top-[21.75%] right-[9.59%] shadow-small-cube small-cube-4">
+                <div class="absolute w-[41px] h-[41px] rounded-[6px] bg-[#F2C94C] flex items-center justify-center top-[21.75%] right-[9.59%] shadow-small-cube small-cube-4 cursor-pointer" @click="showFlash">
                     <picture class="">
                         <img src="~/assets/images/ic_4.svg" alt="">
                     </picture>
@@ -80,8 +105,19 @@ const addSnow = () => {
             </div>
         </div>
         <div class="layer absolute inset-0 z-[-2] h-full w-full"></div>
-        <div class="snow-wrap w-full h-full overflow-hidden absolute z-[5] top-0 left-0 right-0 pointer-events-none opacity-0">
-            <span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span style="--i:51"></span><span style="--i:52"></span><span style="--i:53"></span><span style="--i:54"></span><span style="--i:55"></span><span style="--i:56"></span><span style="--i:57"></span><span style="--i:58"></span><span style="--i:59"></span>
+        <div class="snow-wrap w-full h-full overflow-hidden absolute z-30 top-0 left-0 right-0 pointer-events-none opacity-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="flash-wrap w-[70vh] h-[70vh] rounded-full bg-[#ffff0166] absolute z-40 top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-40%] opacity-0 pointer-events-none" style="box-shadow: 0 0 350px 0 #ffff01"></div>
+        <div class="video-wrap w-[70%] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] z-20 opacity-0 pointer-events-none transition-all duration-300">
+            <video muted playsinline preload="none" class="mx-auto">
+                <source src="~/assets/video/videoplayback.mp4" type="video/mp4" class="w-full h-full">
+            </video>
+        </div>
+        <div class="lock-wrap w-[70vh] h-[70vh] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] z-20 pointer-events-none opacity-0">
+            <picture>
+                <img src="~/assets/images/lock-icon.svg" alt="" class="w-full h-full object-contain">
+            </picture>
         </div>
     </div>
 </template>
@@ -166,15 +202,9 @@ const addSnow = () => {
     .snow-wrap span {
         @apply relative w-[10px] h-[10px] bg-[#3b82f680] rounded-full ml-[1.1%] top-0 inline-block origin-bottom border-[2px] border-dotted border-white;
 
-        animation: snowFall 75s linear infinite;
-    }
-
-    .snow-wrap span:nth-child(odd) {
-        animation-duration: calc(220s / var(--i));
-    }
-
-    .snow-wrap span:nth-child(even) {
-        animation-duration: calc(250s / var(--i));
+        animation-name: snowFall;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
     }
 
     @keyframes snowFall {
